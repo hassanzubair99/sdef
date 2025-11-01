@@ -36,8 +36,8 @@ Haya ne ek baar muskuraya, to khuda bhi sharma gaya…” 😍✨`;
       >
         <Card className="overflow-hidden shadow-2xl shadow-pink-300/50">
           <CardHeader>
-            <CardTitle className="font-headline text-3xl text-center">the eyes of angel</CardTitle>
-            <CardDescription className="text-center">by your love HASSAN HERT EMIOJE</CardDescription>
+            <CardTitle className="font-headline text-3xl text-center font-bold">the eyes of angel</CardTitle>
+            <CardDescription className="text-center font-bold">by your love HASSAN HERT EMIOJE</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8 items-center">
