@@ -98,7 +98,7 @@ export default function StoryGenerator() {
                               src={STATIC_IMAGE_URL}
                               alt="A beautiful picture of eyes"
                               fill
-                              className="rounded-md object-cover"
+                              className="rounded-md object-contain"
                               data-ai-hint="eyes close-up"
                               />
                           </div>
@@ -149,7 +149,7 @@ export default function StoryGenerator() {
                   <CardContent className="p-0">
                   <div className="grid md:grid-cols-2">
                       <div className="relative aspect-square">
-                        <Image src={STATIC_IMAGE_URL} alt="Your uploaded picture" fill className="object-cover" data-ai-hint="eyes close-up" />
+                        <Image src={STATIC_IMAGE_URL} alt="Your uploaded picture" fill className="object-contain" data-ai-hint="eyes close-up" />
                       </div>
                       <div className="flex flex-col p-8 md:p-10">
                         <h2 className="font-headline text-3xl lg:text-4xl mb-6 border-b pb-4">Your Story</h2>
