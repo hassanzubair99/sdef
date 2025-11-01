@@ -50,6 +50,33 @@ Dil ki gehraaiyon se aaya hai pesha 💞
 Jhuk kar kehti hain par izhaar nahin karti 📜
 Yeh hai woh husn jo khud hi hai duaa ban kar reh jaati hai 🙏✨`,
   },
+  {
+    imageUrl: 'https://i.ibb.co/7dttTGS8/Screenshot-2025-11-01-155641.png',
+    imageAlt: 'A beautiful picture of a face',
+    imageHint: 'face portrait',
+    title: 'A PORTRAIT OF BEAUTY',
+    subtitle: 'BY YOUR LOVE HASSAN 💖',
+    poem: `✨🌹 Uske Chehre Ki Tasveer – Ek Poori Dastaan-e-Husn 🌹✨
+
+Uska chehra dekh kar lagta hai jaise kisi ne pyaar ki ek poori kitaab 📖 ek chhoti si jagah mein likh di ho... Uski peshani 🧠 ek saaf patthar ki tarah chamakti hai, jispar husn ki dastaan likhi hui hai. Uski aankhein 👁️👁️ "VECTORS" ki tarah seedhi aapke dil ki taraf ishāra karti hain, aur ek hi nazar mein aapke khayalaton ko apni gehrai mein le leti hain.
+
+Uski naak 🖤 ek khoobsurat kajal-sī lakeer hai, jo uske chehre ko ek anokhi shaan deti hai. Uski gaal 🌸 gulāb ki pankhadiyon jaisi narm aur surkh hain, jaise halki si thandī hawa ne unhe chhu kar rang bhar diya ho...
+
+Aur phir aati hai uski muskurāhat... 😊
+Woh jab muskuraati hai to lagta hai jaise subah kī pehli kiran ☀️ pahādon se takrā kar saare jahaan ko roshan kar deti hai. Uske hont 🌹 gulāb ke phool jaisi surkh hai, jo muskurahat ke waqt khilte hain, jaise koi ne kahe — "Yeh khushboo toh sirf tumhare liye hai..." Uske daant ⚪ chandī ke motiyon jaisay chamakte hain, aur jab woh hans deti hai, toh lagta hai jaise saari duniya tham si jaati hai... ❤️
+
+Uski awaaz 🎵 ek narm si sarod jaisi hai, jo har lafz ko geet bana kar aapke kaanon se hote hue aapke dil tak pahunch jaati hai. Uski muskurahat ek aisi duaa hai jo bin bole hi poori ho jaati hai... 🙏✨
+
+Haya bhari hai woh muskurāhat uski 🌸
+Jaise khilta gulab, jaise ujāla subah ka ☀️
+Dekh kar use lagta hai jaise mil gayi ho
+Zindagi ki har khushi ek saath muskura kar... 😊💖
+
+Uske honton pe jo muskān rehti hai 🌹
+Woh meri duaaon ka asar rehti hai 🙏
+Haya ki woh bijli, woh sharmāhat si
+Mere liye toh woh ibaadat ki tarah hai... ✨❤️`,
+  },
 ];
 
 export default function StoryGenerator() {
