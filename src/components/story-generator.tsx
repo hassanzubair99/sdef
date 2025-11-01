@@ -105,7 +105,7 @@ export default function StoryGenerator() {
   };
 
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-4xl">
         {view === 'form' && (
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}>
             <Card>
@@ -114,68 +114,77 @@ export default function StoryGenerator() {
                 <CardDescription className="text-center">Tell a story about her eyes from a single picture.</CardDescription>
                 </CardHeader>
                 <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <CardContent className="space-y-6">
-                    <FormField
-                        control={form.control}
-                        name="image"
-                        render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Your Picture</FormLabel>
-                            <FormControl>
-                            <div>
-                                {imageDataUrl && (
-                                <div className="mb-4">
-                                    <Image
-                                    src={imageDataUrl}
-                                    alt="Preview"
-                                    width={400}
-                                    height={225}
-                                    className="h-auto w-full max-w-sm rounded-md object-contain"
-                                    />
-                                </div>
-                                )}
-                                <div className="relative">
-                                    <Button type="button" variant="outline" asChild>
-                                        <label htmlFor="image-upload" className="cursor-pointer">
-                                            <Upload className="mr-2 h-4 w-4" />
-                                            {imageDataUrl ? 'Change' : 'Upload'} Picture
-                                        </label>
-                                    </Button>
-                                    <Input
-                                        id="image-upload"
-                                        type="file"
-                                        accept="image/png, image/jpeg, image/webp"
-                                        className="sr-only"
-                                        onChange={(e) => {
-                                            field.onChange(e.target.files);
-                                            handleImageChange(e);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="description"
-                        render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Description</FormLabel>
-                            <FormControl>
-                            <Textarea
-                                placeholder="Describe her eyes, the memory, the feeling..."
-                                className="min-h-[100px] resize-none"
-                                {...field}
-                            />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                        )}
-                    />
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <CardContent>
+                      <div className="grid md:grid-cols-2 gap-8 items-start">
+                        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+                          <FormField
+                              control={form.control}
+                              name="image"
+                              render={({ field }) => (
+                              <FormItem>
+                                  <FormLabel>Your Picture</FormLabel>
+                                  <FormControl>
+                                  <div className="flex flex-col items-center justify-center w-full">
+                                      {imageDataUrl ? (
+                                      <div className="mb-4 w-full aspect-square relative">
+                                          <Image
+                                          src={imageDataUrl}
+                                          alt="Preview"
+                                          fill
+                                          className="rounded-md object-cover"
+                                          />
+                                      </div>
+                                      ) : (
+                                        <div className="w-full aspect-square bg-muted rounded-md flex items-center justify-center">
+                                          <p className="text-muted-foreground">Image preview</p>
+                                        </div>
+                                      )}
+                                      <div className="mt-4 relative">
+                                          <Button type="button" variant="outline" asChild>
+                                              <label htmlFor="image-upload" className="cursor-pointer">
+                                                  <Upload className="mr-2 h-4 w-4" />
+                                                  {imageDataUrl ? 'Change' : 'Upload'} Picture
+                                              </label>
+                                          </Button>
+                                          <Input
+                                              id="image-upload"
+                                              type="file"
+                                              accept="image/png, image/jpeg, image/webp"
+                                              className="sr-only"
+                                              onChange={(e) => {
+                                                  field.onChange(e.target.files);
+                                                  handleImageChange(e);
+                                              }}
+                                          />
+                                      </div>
+                                  </div>
+                                  </FormControl>
+                                  <FormMessage className="text-center" />
+                              </FormItem>
+                              )}
+                          />
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                          <FormField
+                              control={form.control}
+                              name="description"
+                              render={({ field }) => (
+                              <FormItem>
+                                  <FormLabel>Your Paragraph</FormLabel>
+                                  <FormControl>
+                                  <Textarea
+                                      placeholder="Describe her eyes, the memory, the feeling..."
+                                      className="min-h-[300px] resize-none rounded-lg shadow-inner"
+                                      {...field}
+                                  />
+                                  </FormControl>
+                                  <FormMessage />
+                              </FormItem>
+                              )}
+                          />
+                        </motion.div>
+                      </div>
                     </CardContent>
                     <CardFooter>
                     <Button type="submit" size="lg" className="w-full" disabled={!form.formState.isValid}>
