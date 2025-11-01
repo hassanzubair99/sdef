@@ -1,16 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const STATIC_IMAGE_URL = 'https://i.ibb.co/5gd7rTpv/Screenshot-2025-11-01-132005.png';
 
@@ -36,26 +29,37 @@ Haya ne ek baar muskuraya, to khuda bhi sharma gaya…” 😍✨`;
 
   return (
     <div className="w-full max-w-4xl">
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}>
-        <Card>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <Card className="overflow-hidden shadow-2xl shadow-pink-200/50">
           <CardHeader>
             <CardTitle className="font-headline text-3xl text-center">Picture Story</CardTitle>
             <CardDescription className="text-center">A story about her eyes.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                <div className="w-full aspect-square relative">
-                  <Image
-                    src={STATIC_IMAGE_URL}
-                    alt="A beautiful picture of eyes"
-                    fill
-                    className="rounded-md object-contain"
-                    data-ai-hint="eyes close-up"
-                  />
-                </div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+                className="w-full aspect-square relative"
+              >
+                <Image
+                  src={STATIC_IMAGE_URL}
+                  alt="A beautiful picture of eyes"
+                  fill
+                  className="rounded-md object-contain"
+                  data-ai-hint="eyes close-up"
+                />
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+              >
                 <div className="prose prose-lg text-foreground flex-grow">
                   <p className="whitespace-pre-wrap leading-relaxed font-bold">{poem}</p>
                 </div>
