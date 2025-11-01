@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { generateStoryAction } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
@@ -22,7 +22,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Download, Loader2, Sparkles } from 'lucide-react';
 
-const STATIC_IMAGE_URL = 'https://storage.googleapis.com/studiopicturestory/eyes.jpeg';
+const STATIC_IMAGE_URL = 'https://i.ibb.co/5gd7rTpv/Screenshot-2025-11-01-132005.png';
 
 const formSchema = z.object({
   description: z.string().min(10, 'Please write at least 10 characters.').max(500, 'Description cannot exceed 500 characters.'),

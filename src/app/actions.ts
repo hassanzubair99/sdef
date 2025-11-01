@@ -4,7 +4,7 @@ import { generateStoryFromImageAndDescription } from '@/ai/flows/generate-story-
 import { z } from 'zod';
 
 const FormSchema = z.string().min(1, 'Description is required.');
-const STATIC_IMAGE_URL = 'https://storage.googleapis.com/studiopicturestory/eyes.jpeg';
+const STATIC_IMAGE_URL = 'https://i.ibb.co/5gd7rTpv/Screenshot-2025-11-01-132005.png';
 
 
 export async function generateStoryAction(description: string) {
