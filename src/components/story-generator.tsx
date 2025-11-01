@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
+import { useEffect } from 'react';
+import { type CarouselApi } from '@/components/ui/carousel';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -100,7 +101,30 @@ Aapki zulfon ki shaan, aankhon ki gehraai, muskurahat ki mithas aur haathon ki n
   },
 ];
 
-export default function StoryGenerator() {
+export default function StoryGenerator({ onComplete }: { onComplete: () => void }) {
+  const [api, setApi] = React.useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const onSelect = () => {
+      const lastSlide = api.scrollSnapList().length - 1;
+      if (api.selectedScrollSnap() === lastSlide) {
+        setTimeout(() => {
+          onComplete();
+        }, 2000); // Wait 2 seconds on the last slide before completing
+      }
+    };
+
+    api.on('select', onSelect);
+
+    return () => {
+      api.off('select', onSelect);
+    };
+  }, [api, onComplete]);
+
   return (
     <div className="w-full max-w-4xl">
       <motion.div
@@ -108,7 +132,7 @@ export default function StoryGenerator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <Carousel className="w-full">
+        <Carousel className="w-full" setApi={setApi}>
           <CarouselContent>
             {pages.map((page, index) => (
               <CarouselItem key={index}>
