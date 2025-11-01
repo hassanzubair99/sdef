@@ -44,12 +44,7 @@ Haya ne ek baar muskuraya, to khuda bhi sharma gaya…” 😍✨`;
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-                <div className="prose prose-lg text-foreground flex-grow">
-                  <p className="whitespace-pre-wrap leading-relaxed font-bold">{poem}</p>
-                </div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                 <div className="w-full aspect-square relative">
                   <Image
                     src={STATIC_IMAGE_URL}
@@ -58,6 +53,11 @@ Haya ne ek baar muskuraya, to khuda bhi sharma gaya…” 😍✨`;
                     className="rounded-md object-contain"
                     data-ai-hint="eyes close-up"
                   />
+                </div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                <div className="prose prose-lg text-foreground flex-grow">
+                  <p className="whitespace-pre-wrap leading-relaxed font-bold">{poem}</p>
                 </div>
               </motion.div>
             </div>
