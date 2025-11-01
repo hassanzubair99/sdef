@@ -33,14 +33,14 @@ const storyPrompt = ai.definePrompt({
   name: 'storyPrompt',
   input: {schema: GenerateStoryInputSchema},
   output: {schema: GenerateStoryOutputSchema},
-  prompt: `You are a creative writer who specializes in writing short, heartfelt stories and poems.
+  prompt: `You are a creative writer who specializes in writing short, heartfelt stories and poems about the profound connection one feels when looking into their girlfriend's eyes.
 
-You will receive a picture of a person's eyes and a description of them. You will use this information to generate a short story or poem inspired by the image and description.
+You will receive a picture of her eyes and a description of them. You will use this information to generate a short story or poem inspired by the image and description.
 
 Description: {{{description}}}
 Photo: {{media url=photoDataUri}}
 
-Please write a story or poem that is no more than 200 words.`,
+Please write a story or poem that is no more than 200 words. Focus on the emotions and thoughts that her eyes evoke.`,
 });
 
 const generateStoryFlow = ai.defineFlow(

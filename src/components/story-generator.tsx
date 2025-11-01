@@ -111,7 +111,7 @@ export default function StoryGenerator() {
             <Card>
                 <CardHeader>
                 <CardTitle className="font-headline text-3xl text-center">Picture Story</CardTitle>
-                <CardDescription className="text-center">Tell a story from a single picture.</CardDescription>
+                <CardDescription className="text-center">Tell a story about her eyes from a single picture.</CardDescription>
                 </CardHeader>
                 <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -123,32 +123,35 @@ export default function StoryGenerator() {
                         <FormItem>
                             <FormLabel>Your Picture</FormLabel>
                             <FormControl>
-                            <div className="relative">
-                                <Input
-                                type="file"
-                                accept="image/png, image/jpeg, image/webp"
-                                className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
-                                onChange={(e) => {
-                                    field.onChange(e.target.files);
-                                    handleImageChange(e);
-                                }}
-                                />
-                                <div className="flex aspect-video w-full items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted/30 transition-colors hover:border-primary/50">
-                                {imageDataUrl ? (
+                            <div>
+                                {imageDataUrl && (
+                                <div className="mb-4">
                                     <Image
                                     src={imageDataUrl}
                                     alt="Preview"
                                     width={400}
                                     height={225}
-                                    className="h-full w-full rounded-md object-contain"
+                                    className="h-auto w-full max-w-sm rounded-md object-contain"
                                     />
-                                ) : (
-                                    <div className="text-center text-muted-foreground">
-                                    <Upload className="mx-auto mb-2 h-10 w-10" />
-                                    <p className="font-medium">Click or drag to upload</p>
-                                    <p className="text-sm">PNG, JPG, or WEBP (Max 5MB)</p>
-                                    </div>
+                                </div>
                                 )}
+                                <div className="relative">
+                                    <Button type="button" variant="outline" asChild>
+                                        <label htmlFor="image-upload" className="cursor-pointer">
+                                            <Upload className="mr-2 h-4 w-4" />
+                                            {imageDataUrl ? 'Change' : 'Upload'} Picture
+                                        </label>
+                                    </Button>
+                                    <Input
+                                        id="image-upload"
+                                        type="file"
+                                        accept="image/png, image/jpeg, image/webp"
+                                        className="sr-only"
+                                        onChange={(e) => {
+                                            field.onChange(e.target.files);
+                                            handleImageChange(e);
+                                        }}
+                                    />
                                 </div>
                             </div>
                             </FormControl>
@@ -164,7 +167,7 @@ export default function StoryGenerator() {
                             <FormLabel>Description</FormLabel>
                             <FormControl>
                             <Textarea
-                                placeholder="Describe the memory, the person, the feeling..."
+                                placeholder="Describe her eyes, the memory, the feeling..."
                                 className="min-h-[100px] resize-none"
                                 {...field}
                             />
