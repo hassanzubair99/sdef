@@ -77,6 +77,27 @@ Woh meri duaaon ka asar rehti hai 🙏
 Haya ki woh bijli, woh sharmāhat si
 Mere liye toh woh ibaadat ki tarah hai... ✨❤️`,
   },
+  {
+    imageUrl: 'https://i.ibb.co/dqt24Bk/Screenshot-2025-11-01-160414.png',
+    imageAlt: 'A composite image of beauty',
+    imageHint: 'beauty collage',
+    title: 'A COMPLETE MASTERPIECE',
+    subtitle: 'BY YOUR LOVE HASSAN 💖',
+    poem: `🌿 Aapki Zulfen – Baalon Ki Kahaani
+Aapki zulfen jaise shaam ki saaya-daar ghataein hain 🌥️, jo maathe par lahrati hui aapke chehre ko ek raunaq-bakhsh nazakat deti hain. Woh jab hawa mein lehrati hain, toh lagta hai jaise koi kalaakar apne brush se koi jawaan nazm likh raha ho 🎨. Har baal ek misra hai, har lat ek alfaaz... jo aapki haya ko chhupate hue bhi zaahir kar dete hain.
+
+👁️ Aapki Aankhein – Nigaahon Ki Dastaan
+Aapki aankhein woh jaadu-bhari kitaab hain jinko padh kar insaan khud ko bhool jaata hai 📖💫. In mein ek gehrai hai jaise samandar ki gehrayi, ek aas hai jaise subah ki pehli kiran, aur ek sukoon hai jaise baarish ki boonden patton par 🍃. Yeh aankhein na sirf dekhti hain, balki mehsoos karaati hain... har nazar pyaar ka paigaam hai, har jhalk aas ka sandesh.
+
+😊 Aapki Muskurahat – Khushi Ka Geet
+Aapki muskurahat toh woh ajeeb jaadu hai jo duniya ke sare ghamon ko hara deti hai 🌞. Jaise andheri raat mein chaand ki roshni chamak uthti hai, waise hi aapke honton ki yeh halki-si jhalk zindagi ke har rang ko ujwal kar deti hai 🌙. Yeh muskurahat na sirf aapke chehre ko roshan karti hai, balki har dekhne wale ke dil ko bhi mehka jaati hai... jaise khilte gulab ki khushboo hawa mein ghul jaati hai 🌹.
+
+🤲 Aapke Haath – Imtihaan Ki Nishani
+Aapke haath woh nazuk kaliyan hain jo dua bhi hain aur duaaon ka asar bhi 🙏✨. Inme ek lehzati hui komalta hai jaise koi shehzadi ke haath, magar inme woh taqat bhi hai jo duniya badal sakti hai 💪. Ye woh haath hain jo na sirf seva kar sakte hain, balki kisi ke aankhon ko bhi pounch sakte hain... jo na sirf tham sakte hain, balki jod bhi sakte hain ❤️.
+
+✨ Ik Akhiri Alfaz
+Aapki zulfon ki shaan, aankhon ki gehraai, muskurahat ki mithas aur haathon ki nazakat - yeh sab milkar aapko woh khoobsurat banana bana deti hain jo na sirf dekhe ja sakti hai, balki mehsoos bhi ki ja sakti hai 🌸. Aapki yeh khoobsurti kisi shayri ki tarah hai jo padhne se nahi, balki jeene se mehsoos hoti hai... ❤️📜`,
+  },
 ];
 
 export default function StoryGenerator() {
