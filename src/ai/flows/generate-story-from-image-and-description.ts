@@ -14,14 +14,14 @@ const GenerateStoryInputSchema = z.object({
   photoDataUri: z
     .string()
     .describe(
-      "A photo of your girlfriend, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+      "A photo of your girlfriend's eyes, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
     ),
-  description: z.string().describe('A text description about the picture.'),
+  description: z.string().describe('A text description about her eyes.'),
 });
 export type GenerateStoryInput = z.infer<typeof GenerateStoryInputSchema>;
 
 const GenerateStoryOutputSchema = z.object({
-  story: z.string().describe('A short story or poem inspired by the image and description.'),
+  story: z.string().describe('A short story or poem inspired by the image and description of her eyes.'),
 });
 export type GenerateStoryOutput = z.infer<typeof GenerateStoryOutputSchema>;
 
@@ -35,7 +35,7 @@ const storyPrompt = ai.definePrompt({
   output: {schema: GenerateStoryOutputSchema},
   prompt: `You are a creative writer who specializes in writing short, heartfelt stories and poems.
 
-You will receive a picture of a person and a description of the picture. You will use this information to generate a short story or poem inspired by the image and description.
+You will receive a picture of a person's eyes and a description of them. You will use this information to generate a short story or poem inspired by the image and description.
 
 Description: {{{description}}}
 Photo: {{media url=photoDataUri}}
