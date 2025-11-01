@@ -3,39 +3,27 @@
 import { generateStoryFromImageAndDescription } from '@/ai/flows/generate-story-from-image-and-description';
 import { z } from 'zod';
 
-const FormSchema = z.object({
-  description: z.string().min(1, 'Description is required.'),
-  image: z
-    .instanceof(File, { message: 'Image is required.' })
-    .refine((file) => file.size > 0, 'Image is required.'),
-});
+const FormSchema = z.string().min(1, 'Description is required.');
+const STATIC_IMAGE_URL = 'https://storage.googleapis.com/studiopicturestory/eyes.jpeg';
 
-export async function generateStoryAction(formData: FormData) {
+
+export async function generateStoryAction(description: string) {
   try {
-    const validatedFields = FormSchema.safeParse({
-      description: formData.get('description'),
-      image: formData.get('image'),
-    });
+    const validatedDescription = FormSchema.safeParse(description);
 
-    if (!validatedFields.success) {
+    if (!validatedDescription.success) {
       return {
-        error: validatedFields.error.errors.map((e) => e.message).join(', '),
+        error: validatedDescription.error.errors.map((e) => e.message).join(', '),
       };
     }
 
-    const { description, image } = validatedFields.data;
-
-    const imageBuffer = await image.arrayBuffer();
-    const imageBase64 = Buffer.from(imageBuffer).toString('base64');
-    const photoDataUri = `data:${image.type};base64,${imageBase64}`;
-
     const result = await generateStoryFromImageAndDescription({
-      description,
-      photoDataUri,
+      description: validatedDescription.data,
+      photoDataUri: STATIC_IMAGE_URL,
     });
 
     if (!result || !result.story) {
-        return { error: 'The AI could not generate a story. Please try a different image or description.'}
+        return { error: 'The AI could not generate a story. Please try a different description.'}
     }
 
     return { story: result.story };

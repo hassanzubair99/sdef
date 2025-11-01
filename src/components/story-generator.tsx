@@ -19,20 +19,13 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, Download, Loader2, Sparkles, Upload } from 'lucide-react';
+import { ArrowLeft, Download, Loader2, Sparkles } from 'lucide-react';
+
+const STATIC_IMAGE_URL = 'https://storage.googleapis.com/studiopicturestory/eyes.jpeg';
 
 const formSchema = z.object({
   description: z.string().min(10, 'Please write at least 10 characters.').max(500, 'Description cannot exceed 500 characters.'),
-  image: z
-    .any()
-    .refine((files) => files?.length === 1, 'An image is required.')
-    .refine((files) => files?.[0]?.size <= 5000000, `Max file size is 5MB.`)
-    .refine(
-      (files) => ['image/jpeg', 'image/png', 'image/webp'].includes(files?.[0]?.type),
-      '.jpg, .png, and .webp files are accepted.'
-    ),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -42,7 +35,6 @@ type View = 'form' | 'loading' | 'result';
 export default function StoryGenerator() {
   const [view, setView] = useState<View>('form');
   const [story, setStory] = useState<string | null>(null);
-  const [imageDataUrl, setImageDataUrl] = useState<string | null>(null);
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -51,25 +43,9 @@ export default function StoryGenerator() {
     mode: 'onTouched',
   });
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImageDataUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const onSubmit = async (values: FormValues) => {
     setView('loading');
-
-    const formData = new FormData();
-    formData.append('description', values.description);
-    formData.append('image', values.image[0]);
-
-    const result = await generateStoryAction(formData);
+    const result = await generateStoryAction(values.description);
 
     if (result.error) {
       toast({
@@ -100,7 +76,6 @@ export default function StoryGenerator() {
   const reset = () => {
     form.reset();
     setStory(null);
-    setImageDataUrl(null);
     setView('form');
   };
 
@@ -111,59 +86,22 @@ export default function StoryGenerator() {
             <Card>
                 <CardHeader>
                 <CardTitle className="font-headline text-3xl text-center">Picture Story</CardTitle>
-                <CardDescription className="text-center">Tell a story about her eyes from a single picture.</CardDescription>
+                <CardDescription className="text-center">Tell a story about her eyes.</CardDescription>
                 </CardHeader>
                 <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <CardContent>
                       <div className="grid md:grid-cols-2 gap-8 items-start">
                         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                          <FormField
-                              control={form.control}
-                              name="image"
-                              render={({ field }) => (
-                              <FormItem>
-                                  <FormLabel>Your Picture</FormLabel>
-                                  <FormControl>
-                                  <div className="flex flex-col items-center justify-center w-full">
-                                      {imageDataUrl ? (
-                                      <div className="mb-4 w-full aspect-square relative">
-                                          <Image
-                                          src={imageDataUrl}
-                                          alt="Preview"
-                                          fill
-                                          className="rounded-md object-cover"
-                                          />
-                                      </div>
-                                      ) : (
-                                        <div className="w-full aspect-square bg-muted rounded-md flex items-center justify-center">
-                                          <p className="text-muted-foreground">Image preview</p>
-                                        </div>
-                                      )}
-                                      <div className="mt-4 relative">
-                                          <Button type="button" variant="outline" asChild>
-                                              <label htmlFor="image-upload" className="cursor-pointer">
-                                                  <Upload className="mr-2 h-4 w-4" />
-                                                  {imageDataUrl ? 'Change' : 'Upload'} Picture
-                                              </label>
-                                          </Button>
-                                          <Input
-                                              id="image-upload"
-                                              type="file"
-                                              accept="image/png, image/jpeg, image/webp"
-                                              className="sr-only"
-                                              onChange={(e) => {
-                                                  field.onChange(e.target.files);
-                                                  handleImageChange(e);
-                                              }}
-                                          />
-                                      </div>
-                                  </div>
-                                  </FormControl>
-                                  <FormMessage className="text-center" />
-                              </FormItem>
-                              )}
-                          />
+                          <div className="w-full aspect-square relative">
+                              <Image
+                              src={STATIC_IMAGE_URL}
+                              alt="A beautiful picture of eyes"
+                              fill
+                              className="rounded-md object-cover"
+                              data-ai-hint="eyes close-up"
+                              />
+                          </div>
                         </motion.div>
                         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
                           <FormField
@@ -205,13 +143,13 @@ export default function StoryGenerator() {
           </motion.div>
         )}
         
-        {view === 'result' && story && imageDataUrl && (
+        {view === 'result' && story && (
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="w-full max-w-4xl space-y-8">
               <Card className="overflow-hidden shadow-xl">
                   <CardContent className="p-0">
                   <div className="grid md:grid-cols-2">
                       <div className="relative aspect-square">
-                        <Image src={imageDataUrl} alt="Your uploaded picture" fill className="object-cover" />
+                        <Image src={STATIC_IMAGE_URL} alt="Your uploaded picture" fill className="object-cover" data-ai-hint="eyes close-up" />
                       </div>
                       <div className="flex flex-col p-8 md:p-10">
                         <h2 className="font-headline text-3xl lg:text-4xl mb-6 border-b pb-4">Your Story</h2>
