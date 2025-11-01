@@ -34,7 +34,7 @@ Haya ne ek baar muskuraya, to khuda bhi sharma gaya…” 😍✨`;
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <Card className="overflow-hidden shadow-2xl shadow-pink-200/50">
+        <Card className="overflow-hidden shadow-2xl shadow-pink-300/50">
           <CardHeader>
             <CardTitle className="font-headline text-3xl text-center">Picture Story</CardTitle>
             <CardDescription className="text-center">A story about her eyes.</CardDescription>
